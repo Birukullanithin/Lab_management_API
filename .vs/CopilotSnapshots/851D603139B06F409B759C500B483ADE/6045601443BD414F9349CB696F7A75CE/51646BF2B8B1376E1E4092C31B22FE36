@@ -1,0 +1,61 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly LabDbContext _context;
+
+        public PatientRepository(LabDbContext context)
+        {
+            _context = context;
+        }
+
+        public Task<Patient?> GetByIdAsync(int patientId)
+        {
+            var patient = _context.Patients.FirstOrDefault(p => p.PatientId == patientId);
+            return Task.FromResult(patient);
+        }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            return Task.FromResult<IEnumerable<Patient>>(_context.Patients.ToList());
+        }
+
+        public async Task<Patient> CreateAsync(Patient patient)
+        {
+            // simulate identity generation
+            var nextId = _context.Patients.Any() ? _context.Patients.Max(p => p.PatientId) + 1 : 1;
+            patient.PatientId = nextId;
+            _context.Patients.Add(patient);
+            await _context.SaveChangesAsync();
+            return patient;
+        }
+
+        public async Task UpdateAsync(Patient patient)
+        {
+            var existing = _context.Patients.FirstOrDefault(p => p.PatientId == patient.PatientId);
+            if (existing != null)
+            {
+                _context.Patients.Remove(existing);
+                _context.Patients.Add(patient);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteAsync(int patientId)
+        {
+            var patient = _context.Patients.FirstOrDefault(p => p.PatientId == patientId);
+            if (patient != null)
+            {
+                _context.Patients.Remove(patient);
+                await _context.SaveChangesAsync();
+            }
+        }
+    }
+}

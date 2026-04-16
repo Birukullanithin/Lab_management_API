@@ -1,0 +1,56 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace LabManagement.Models
+{
+    [Table("patient", Schema = "lab")]
+    public class Patient
+    {
+        [Key]
+        [Column("patient_id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [JsonPropertyName("patient_id")]
+        public int PatientId { get; set; }
+
+        [Column("organization_id")]
+        public int? OrganizationId { get; set; }
+
+        [Column("legal_entity_id")]
+        public int? LegalEntityId { get; set; }
+
+        [Required]
+        [Column("patient_name")]
+        [MaxLength(255)]
+        [JsonPropertyName("patient_name")]
+        public string PatientName { get; set; } = null!;
+
+        [Column("age")]
+        public int? Age { get; set; }
+
+        [Column("gender")]
+        [MaxLength(10)]
+        public string? Gender { get; set; }
+
+        [Column("date_of_birth")]
+        public DateTime? DateOfBirth { get; set; }
+
+        [Column("phone")]
+        [MaxLength(20)]
+        public string? Phone { get; set; }
+
+        [Column("email")]
+        [MaxLength(100)]
+        public string? Email { get; set; }
+
+        [Column("address")]
+        public string? Address { get; set; }
+
+        [Column("created_at")]
+        public DateTime CreatedAt { get; set; }
+        
+        [Column("updated_at")]
+        public DateTime? UpdatedAt { get; set; }
+    }
+}

@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Data;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly LabDbContext _dbContext;
+
+        public PatientRepository(LabDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public Task<Patient?> GetByIdAsync(int patientId)
+        {
+            var sql = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient WHERE patient_id = @Id";
+            var p = _dbContext.QuerySinglePatient(sql, new System.Collections.Generic.Dictionary<string, object?> { { "Id", patientId } });
+            return Task.FromResult<Patient?>(p);
+        }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            var sql = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient";
+            var list = _dbContext.QueryPatients(sql, null);
+            return Task.FromResult<IEnumerable<Patient>>(list);
+        }
+
+        public Task<Patient> CreateAsync(Patient patient)
+        {
+            using var conn = _dbContext.GetOpenConnection();
+            using var cmd = _dbContext.CreateCommand(conn, @"INSERT INTO lab.patient (organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at)
+                                VALUES (@OrganizationId, @LegalEntityId, @PatientName, @Age, @Gender, @DateOfBirth, @Phone, @Email, @Address, @CreatedAt, @UpdatedAt);
+                                SELECT SCOPE_IDENTITY();");
+
+            var parameters = new System.Collections.Generic.Dictionary<string, object?>
+            {
+                { "OrganizationId", patient.OrganizationId },
+                { "LegalEntityId", patient.LegalEntityId },
+                { "PatientName", patient.PatientName },
+                { "Age", patient.Age },
+                { "Gender", patient.Gender },
+                { "DateOfBirth", patient.DateOfBirth },
+                { "Phone", patient.Phone },
+                { "Email", patient.Email },
+                { "Address", patient.Address },
+                { "CreatedAt", patient.CreatedAt },
+                { "UpdatedAt", patient.UpdatedAt }
+            };
+
+            _dbContext.AddParameters(cmd, parameters);
+
+            var parameters = new System.Collections.Generic.Dictionary<string, object?>
+            {
+                { "OrganizationId", patient.OrganizationId },
+                { "LegalEntityId", patient.LegalEntityId },
+                { "PatientName", patient.PatientName },
+                { "Age", patient.Age },
+                { "Gender", patient.Gender },
+                { "DateOfBirth", patient.DateOfBirth },
+                { "Phone", patient.Phone },
+                { "Email", patient.Email },
+                { "Address", patient.Address },
+                { "CreatedAt", patient.CreatedAt },
+                { "UpdatedAt", patient.UpdatedAt }
+            };
+
+            var result = _dbContext.ExecuteScalar(cmd.CommandText, parameters);
+            if (result != null && int.TryParse(result.ToString(), out var id))
+            {
+                patient.PatientId = id;
+            }
+            return Task.FromResult(patient);
+        }
+
+        public Task UpdateAsync(Patient patient)
+        {
+            using var conn = _dbContext.GetOpenConnection();
+            using var cmd = _dbContext.CreateCommand(conn, @"UPDATE lab.patient SET
+                                organization_id = @OrganizationId,
+                                legal_entity_id = @LegalEntityId,
+                                patient_name = @PatientName,
+                                age = @Age,
+                                gender = @Gender,
+                                date_of_birth = @DateOfBirth,
+                                phone = @Phone,
+                                email = @Email,
+                                address = @Address,
+                                updated_at = @UpdatedAt
+                            WHERE patient_id = @PatientId");
+
+            var parameters = new System.Collections.Generic.Dictionary<string, object?>
+            {
+                { "OrganizationId", patient.OrganizationId },
+                { "LegalEntityId", patient.LegalEntityId },
+                { "PatientName", patient.PatientName },
+                { "Age", patient.Age },
+                { "Gender", patient.Gender },
+                { "DateOfBirth", patient.DateOfBirth },
+                { "Phone", patient.Phone },
+                { "Email", patient.Email },
+                { "Address", patient.Address },
+                { "UpdatedAt", patient.UpdatedAt },
+                { "PatientId", patient.PatientId }
+            };
+
+            var rows = _dbContext.ExecuteNonQuery(cmd.CommandText, parameters);
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM lab.patient WHERE patient_id = @Id";
+            var p = cmd.CreateParameter();
+            p.ParameterName = "@Id";
+            p.Value = patientId;
+            cmd.Parameters.Add(p);
+            cmd.ExecuteNonQuery();
+            return Task.CompletedTask;
+        }
+    }
+}

@@ -1,0 +1,106 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using LabManagement.Interfaces;
+using LabManagement.Dtos;
+using LabManagement.Models;
+
+namespace LabManagement.Services
+{
+    public class PatientService : IPatientService
+    {
+        private readonly IPatientRepository _patientrepository;
+
+        public PatientService(IPatientRepository repository)
+        {
+            _patientrepository = repository;
+        }
+
+        public async Task<PatientDto?> GetPatientByIdAsync(int patientId)
+        {
+            var patient = await _patientrepository.GetByIdAsync(patientId);
+            if (patient == null) return null;
+            return MapToDto(patient);
+        }
+
+        public async Task<IEnumerable<PatientDto>> GetAllPatientsAsync()
+        {
+            var patients = await _patientrepository.GetAllAsync();
+            var list = new List<PatientDto>();
+            foreach (var p in patients)
+            {
+                list.Add(MapToDto(p));
+            }
+            return list;
+        }
+
+        public async Task<PatientDto> CreatePatientAsync(PatientDto dto)
+        {
+            var patient = MapToEntity(dto);
+            var created = await _patientrepository.CreateAsync(patient);
+            return MapToDto(created);
+        }
+
+        public async Task UpdatePatientAsync(int patientId, PatientDto dto)
+        {
+            var existing = await    _patientrepository.GetByIdAsync(patientId);
+            if (existing == null) return;
+
+            // update fields
+            existing.PatientName = dto.PatientName;
+            existing.Age = dto.Age;
+            existing.Gender = dto.Gender;
+            existing.DateOfBirth = dto.DateOfBirth;
+            existing.Phone = dto.Phone;
+            existing.Email = dto.Email;
+            existing.Address = dto.Address;
+            existing.OrganizationId = dto.OrganizationId;
+            existing.LegalEntityId = dto.LegalEntityId;
+            existing.UpdatedAt = dto.UpdatedAt ?? System.DateTime.UtcNow;
+
+            await _patientrepository.UpdateAsync(existing);
+        }
+
+        public async Task DeletePatientAsync(int patientId)
+        {
+            await _patientrepository.DeleteAsync(patientId);
+        }
+
+        private static PatientDto MapToDto(Patient p)
+        {
+            return new PatientDto
+            {
+                PatientId = p.PatientId,
+                OrganizationId = p.OrganizationId,
+                LegalEntityId = p.LegalEntityId,
+                PatientName = p.PatientName,
+                Age = p.Age,
+                Gender = p.Gender,
+                DateOfBirth = p.DateOfBirth,
+                Phone = p.Phone,
+                Email = p.Email,
+                Address = p.Address,
+                CreatedAt = p.CreatedAt,
+                UpdatedAt = p.UpdatedAt
+            };
+        }
+
+        private static Patient MapToEntity(PatientDto d)
+        {
+            return new Patient
+            {
+                PatientId = d.PatientId,
+                OrganizationId = d.OrganizationId,
+                LegalEntityId = d.LegalEntityId,
+                PatientName = d.PatientName,
+                Age = d.Age,
+                Gender = d.Gender,
+                DateOfBirth = d.DateOfBirth,
+                Phone = d.Phone,
+                Email = d.Email,
+                Address = d.Address,
+                CreatedAt = d.CreatedAt,
+                UpdatedAt = d.UpdatedAt
+            };
+        }
+    }
+}

@@ -1,0 +1,21 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using LabManagement.Models;
+
+namespace LabManagement.Data
+{
+    // Lightweight in-memory context used when EF Core isn't available in the environment.
+    // This keeps the project compilable and allows the repository/service to operate
+    // against a simple in-memory store. Replace with a real DbContext when EF Core
+    // packages are restored.
+    public class LabDbContext
+    {
+        public List<Patient> Patients { get; } = new();
+
+        public Task SaveChangesAsync()
+        {
+            // No-op for the in-memory store.
+            return Task.CompletedTask;
+        }
+    }
+}

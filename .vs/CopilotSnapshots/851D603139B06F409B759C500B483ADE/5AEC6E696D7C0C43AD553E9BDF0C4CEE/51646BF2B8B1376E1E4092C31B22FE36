@@ -1,0 +1,179 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Data;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public PatientRepository(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public Task<Patient?> GetByIdAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient WHERE patient_id = @Id";
+            var param = cmd.CreateParameter();
+            param.ParameterName = "@Id";
+            param.Value = patientId;
+            cmd.Parameters.Add(param);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return Task.FromResult<Patient?>(null);
+
+            var p = new Patient
+            {
+                PatientId = reader.GetInt32(reader.GetOrdinal("patient_id")),
+                OrganizationId = reader.IsDBNull(reader.GetOrdinal("organization_id")) ? null : reader.GetInt32(reader.GetOrdinal("organization_id")),
+                LegalEntityId = reader.IsDBNull(reader.GetOrdinal("legal_entity_id")) ? null : reader.GetInt32(reader.GetOrdinal("legal_entity_id")),
+                PatientName = reader.GetString(reader.GetOrdinal("patient_name")),
+                Age = reader.IsDBNull(reader.GetOrdinal("age")) ? null : reader.GetInt32(reader.GetOrdinal("age")),
+                Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString(reader.GetOrdinal("gender")),
+                DateOfBirth = reader.IsDBNull(reader.GetOrdinal("date_of_birth")) ? null : reader.GetDateTime(reader.GetOrdinal("date_of_birth")),
+                Phone = reader.IsDBNull(reader.GetOrdinal("phone")) ? null : reader.GetString(reader.GetOrdinal("phone")),
+                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString(reader.GetOrdinal("address")),
+                CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? default : reader.GetDateTime(reader.GetOrdinal("created_at")),
+                UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+            };
+
+            return Task.FromResult<Patient?>(p);
+        }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient";
+            using var reader = cmd.ExecuteReader();
+            var list = new List<Patient>();
+            while (reader.Read())
+            {
+                var p = new Patient
+                {
+                    PatientId = reader.GetInt32(reader.GetOrdinal("patient_id")),
+                    OrganizationId = reader.IsDBNull(reader.GetOrdinal("organization_id")) ? null : reader.GetInt32(reader.GetOrdinal("organization_id")),
+                    LegalEntityId = reader.IsDBNull(reader.GetOrdinal("legal_entity_id")) ? null : reader.GetInt32(reader.GetOrdinal("legal_entity_id")),
+                    PatientName = reader.GetString(reader.GetOrdinal("patient_name")),
+                    Age = reader.IsDBNull(reader.GetOrdinal("age")) ? null : reader.GetInt32(reader.GetOrdinal("age")),
+                    Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString(reader.GetOrdinal("gender")),
+                    DateOfBirth = reader.IsDBNull(reader.GetOrdinal("date_of_birth")) ? null : reader.GetDateTime(reader.GetOrdinal("date_of_birth")),
+                    Phone = reader.IsDBNull(reader.GetOrdinal("phone")) ? null : reader.GetString(reader.GetOrdinal("phone")),
+                    Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                    Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString(reader.GetOrdinal("address")),
+                    CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? default : reader.GetDateTime(reader.GetOrdinal("created_at")),
+                    UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+                };
+                list.Add(p);
+            }
+            return Task.FromResult<IEnumerable<Patient>>(list);
+        }
+
+        public Task<Patient> CreateAsync(Patient patient)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            // SQL Server example using SCOPE_IDENTITY(); if using Postgres, change to RETURNING clause.
+            cmd.CommandText = @"INSERT INTO lab.patient (organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at)
+                                VALUES (@OrganizationId, @LegalEntityId, @PatientName, @Age, @Gender, @DateOfBirth, @Phone, @Email, @Address, @CreatedAt, @UpdatedAt);
+                                SELECT SCOPE_IDENTITY();";
+
+            void AddParam(string name, object? value)
+            {
+                var p = cmd.CreateParameter();
+                p.ParameterName = name;
+                p.Value = value ?? System.DBNull.Value;
+                cmd.Parameters.Add(p);
+            }
+
+            AddParam("@OrganizationId", patient.OrganizationId);
+            AddParam("@LegalEntityId", patient.LegalEntityId);
+            AddParam("@PatientName", patient.PatientName);
+            AddParam("@Age", patient.Age);
+            AddParam("@Gender", patient.Gender);
+            AddParam("@DateOfBirth", patient.DateOfBirth);
+            AddParam("@Phone", patient.Phone);
+            AddParam("@Email", patient.Email);
+            AddParam("@Address", patient.Address);
+            AddParam("@CreatedAt", patient.CreatedAt);
+            AddParam("@UpdatedAt", patient.UpdatedAt);
+
+            var result = cmd.ExecuteScalar();
+            if (result != null && int.TryParse(result.ToString(), out var id))
+            {
+                patient.PatientId = id;
+            }
+            return Task.FromResult(patient);
+        }
+
+        public Task UpdateAsync(Patient patient)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"UPDATE lab.patient SET
+                                organization_id = @OrganizationId,
+                                legal_entity_id = @LegalEntityId,
+                                patient_name = @PatientName,
+                                age = @Age,
+                                gender = @Gender,
+                                date_of_birth = @DateOfBirth,
+                                phone = @Phone,
+                                email = @Email,
+                                address = @Address,
+                                updated_at = @UpdatedAt
+                            WHERE patient_id = @PatientId";
+
+            void AddParam(string name, object? value)
+            {
+                var p = cmd.CreateParameter();
+                p.ParameterName = name;
+                p.Value = value ?? System.DBNull.Value;
+                cmd.Parameters.Add(p);
+            }
+
+            AddParam("@OrganizationId", patient.OrganizationId);
+            AddParam("@LegalEntityId", patient.LegalEntityId);
+            AddParam("@PatientName", patient.PatientName);
+            AddParam("@Age", patient.Age);
+            AddParam("@Gender", patient.Gender);
+            AddParam("@DateOfBirth", patient.DateOfBirth);
+            AddParam("@Phone", patient.Phone);
+            AddParam("@Email", patient.Email);
+            AddParam("@Address", patient.Address);
+            AddParam("@UpdatedAt", patient.UpdatedAt);
+            AddParam("@PatientId", patient.PatientId);
+
+            cmd.ExecuteNonQuery();
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM lab.patient WHERE patient_id = @Id";
+            var p = cmd.CreateParameter();
+            p.ParameterName = "@Id";
+            p.Value = patientId;
+            cmd.Parameters.Add(p);
+            cmd.ExecuteNonQuery();
+            return Task.CompletedTask;
+        }
+    }
+}

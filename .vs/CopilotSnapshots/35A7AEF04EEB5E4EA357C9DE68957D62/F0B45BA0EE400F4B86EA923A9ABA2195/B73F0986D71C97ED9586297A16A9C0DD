@@ -1,0 +1,15 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using LabManagement.Models;
+
+namespace LabManagement.Interfaces
+{
+    public interface IPatientRepository
+    {
+        Task<Patient?> GetByIdAsync(int patientId);
+        Task<IEnumerable<Patient>> GetAllAsync();
+        Task<Patient> CreateAsync(Patient patient);
+        Task UpdateAsync(Patient patient);
+        Task DeleteAsync(int patientId);
+    }
+}

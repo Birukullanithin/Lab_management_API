@@ -1,0 +1,49 @@
+﻿using System;
+using System.Data;
+using LabManagement.Models;
+
+namespace LabManagement.Data
+{
+    // Db context helpers for plain ADO.NET usage. It exposes helpers to create
+    // parameters and map IDataRecord to domain models. SQL statements remain in
+    // the repository per project preference.
+    public class LabDbContext
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public LabDbContext(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public string GetConnectionString() => _connectionFactory.GetConnectionString();
+
+        public IDbDataParameter CreateParameter(IDbCommand cmd, string name, object? value)
+        {
+            var p = cmd.CreateParameter();
+            p.ParameterName = name;
+            p.Value = value ?? DBNull.Value;
+            cmd.Parameters.Add(p);
+            return p;
+        }
+
+        public Patient MapPatient(IDataRecord reader)
+        {
+            return new Patient
+            {
+                PatientId = reader.GetInt32(reader.GetOrdinal("patient_id")),
+                OrganizationId = reader.IsDBNull(reader.GetOrdinal("organization_id")) ? null : reader.GetInt32(reader.GetOrdinal("organization_id")),
+                LegalEntityId = reader.IsDBNull(reader.GetOrdinal("legal_entity_id")) ? null : reader.GetInt32(reader.GetOrdinal("legal_entity_id")),
+                PatientName = reader.GetString(reader.GetOrdinal("patient_name")),
+                Age = reader.IsDBNull(reader.GetOrdinal("age")) ? null : reader.GetInt32(reader.GetOrdinal("age")),
+                Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString(reader.GetOrdinal("gender")),
+                DateOfBirth = reader.IsDBNull(reader.GetOrdinal("date_of_birth")) ? null : reader.GetDateTime(reader.GetOrdinal("date_of_birth")),
+                Phone = reader.IsDBNull(reader.GetOrdinal("phone")) ? null : reader.GetString(reader.GetOrdinal("phone")),
+                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString(reader.GetOrdinal("address")),
+                CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? default : reader.GetDateTime(reader.GetOrdinal("created_at")),
+                UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+            };
+        }
+    }
+}

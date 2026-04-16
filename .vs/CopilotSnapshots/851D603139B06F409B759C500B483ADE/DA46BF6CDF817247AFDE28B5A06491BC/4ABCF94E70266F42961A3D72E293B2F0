@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Data;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly LabDbContext _dbContext;
+
+        public PatientRepository(LabDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        private static Patient MapPatient(IDataRecord reader)
+        {
+            return new Patient
+            {
+                PatientId = reader.GetInt32(reader.GetOrdinal("patient_id")),
+                OrganizationId = reader.IsDBNull(reader.GetOrdinal("organization_id")) ? null : reader.GetInt32(reader.GetOrdinal("organization_id")),
+                LegalEntityId = reader.IsDBNull(reader.GetOrdinal("legal_entity_id")) ? null : reader.GetInt32(reader.GetOrdinal("legal_entity_id")),
+                PatientName = reader.GetString(reader.GetOrdinal("patient_name")),
+                Age = reader.IsDBNull(reader.GetOrdinal("age")) ? null : reader.GetInt32(reader.GetOrdinal("age")),
+                Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString(reader.GetOrdinal("gender")),
+                DateOfBirth = reader.IsDBNull(reader.GetOrdinal("date_of_birth")) ? null : reader.GetDateTime(reader.GetOrdinal("date_of_birth")),
+                Phone = reader.IsDBNull(reader.GetOrdinal("phone")) ? null : reader.GetString(reader.GetOrdinal("phone")),
+                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString(reader.GetOrdinal("address")),
+                CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? default : reader.GetDateTime(reader.GetOrdinal("created_at")),
+                UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+            };
+        }
+
+        public Task<Patient?> GetByIdAsync(int patientId)
+        {
+            var sql = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient WHERE patient_id = @Id";
+            var p = _dbContext.QuerySingle(sql, new System.Collections.Generic.Dictionary<string, object?> { { "Id", patientId } }, MapPatient);
+            return Task.FromResult<Patient?>(p);
+        }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            var sql = @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient";
+            var list = _dbContext.Query<Patient>(sql, null, MapPatient);
+            return Task.FromResult<IEnumerable<Patient>>(list);
+        }
+
+        public Task<Patient> CreateAsync(Patient patient)
+        {
+            var sql = @"INSERT INTO lab.patient (organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at)
+                                VALUES (@OrganizationId, @LegalEntityId, @PatientName, @Age, @Gender, @DateOfBirth, @Phone, @Email, @Address, @CreatedAt, @UpdatedAt);
+                                SELECT SCOPE_IDENTITY();";
+
+            var parameters = new System.Collections.Generic.Dictionary<string, object?>
+            {
+                { "OrganizationId", patient.OrganizationId },
+                { "LegalEntityId", patient.LegalEntityId },
+                { "PatientName", patient.PatientName },
+                { "Age", patient.Age },
+                { "Gender", patient.Gender },
+                { "DateOfBirth", patient.DateOfBirth },
+                { "Phone", patient.Phone },
+                { "Email", patient.Email },
+                { "Address", patient.Address },
+                { "CreatedAt", patient.CreatedAt },
+                { "UpdatedAt", patient.UpdatedAt }
+            };
+
+            var result = _dbContext.ExecuteScalar(sql, parameters);
+            if (result != null && int.TryParse(result.ToString(), out var id))
+            {
+                patient.PatientId = id;
+            }
+            return Task.FromResult(patient);
+        }
+
+        public Task UpdateAsync(Patient patient)
+        {
+            var sql = @"UPDATE lab.patient SET
+                                organization_id = @OrganizationId,
+                                legal_entity_id = @LegalEntityId,
+                                patient_name = @PatientName,
+                                age = @Age,
+                                gender = @Gender,
+                                date_of_birth = @DateOfBirth,
+                                phone = @Phone,
+                                email = @Email,
+                                address = @Address,
+                                updated_at = @UpdatedAt
+                            WHERE patient_id = @PatientId";
+
+            var parameters = new System.Collections.Generic.Dictionary<string, object?>
+            {
+                { "OrganizationId", patient.OrganizationId },
+                { "LegalEntityId", patient.LegalEntityId },
+                { "PatientName", patient.PatientName },
+                { "Age", patient.Age },
+                { "Gender", patient.Gender },
+                { "DateOfBirth", patient.DateOfBirth },
+                { "Phone", patient.Phone },
+                { "Email", patient.Email },
+                { "Address", patient.Address },
+                { "UpdatedAt", patient.UpdatedAt },
+                { "PatientId", patient.PatientId }
+            };
+
+            _dbContext.ExecuteNonQuery(sql, parameters);
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(int patientId)
+        {
+            var sql = "DELETE FROM lab.patient WHERE patient_id = @Id";
+            _dbContext.ExecuteNonQuery(sql, new System.Collections.Generic.Dictionary<string, object?> { { "Id", patientId } });
+            return Task.CompletedTask;
+        }
+    }
+}

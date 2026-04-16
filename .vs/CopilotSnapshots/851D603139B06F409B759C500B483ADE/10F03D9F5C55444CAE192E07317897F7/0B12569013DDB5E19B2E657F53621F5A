@@ -1,0 +1,14 @@
+﻿using Microsoft.EntityFrameworkCore;
+using LabManagement.Models;
+
+namespace LabManagement.Data
+{
+    public class LabDbContext : DbContext
+    {
+        public LabDbContext(DbContextOptions<LabDbContext> options) : base(options)
+        {
+        }
+
+        public DbSet<Patient> Patients { get; set; } = null!;
+    }
+}

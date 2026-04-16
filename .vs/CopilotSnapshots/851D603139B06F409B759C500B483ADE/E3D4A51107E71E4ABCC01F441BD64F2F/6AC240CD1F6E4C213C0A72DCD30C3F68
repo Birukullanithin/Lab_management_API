@@ -1,0 +1,10 @@
+﻿using System.Data;
+
+namespace LabManagement.Data
+{
+    public interface ISqlConnectionFactory
+    {
+        IDbConnection CreateConnection();
+        string GetConnectionString();
+    }
+}

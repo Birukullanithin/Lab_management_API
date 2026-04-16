@@ -1,0 +1,118 @@
+﻿using System;
+using System.Data;
+using LabManagement.Models;
+
+namespace LabManagement.Data
+{
+    // Db context helpers for plain ADO.NET usage. It exposes helpers to create
+    // parameters and map IDataRecord to domain models. SQL statements remain in
+    // the repository per project preference.
+    public class LabDbContext
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public LabDbContext(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public string GetConnectionString() => _connectionFactory.GetConnectionString();
+
+        public IDbDataParameter CreateParameter(IDbCommand cmd, string name, object? value)
+        {
+            var p = cmd.CreateParameter();
+            p.ParameterName = name;
+            p.Value = value ?? DBNull.Value;
+            cmd.Parameters.Add(p);
+            return p;
+        }
+
+        public void AddParameters(IDbCommand cmd, System.Collections.Generic.IDictionary<string, object?> parameters)
+        {
+            if (parameters == null) return;
+            foreach (var kv in parameters)
+            {
+                var name = kv.Key;
+                if (!name.StartsWith("@")) name = "@" + name;
+                CreateParameter(cmd, name, kv.Value);
+            }
+        }
+
+        public IDbConnection GetOpenConnection()
+        {
+            var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            return conn;
+        }
+
+        public IDbCommand CreateCommand(IDbConnection connection, string sql)
+        {
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = sql;
+            return cmd;
+        }
+
+        // Execute a query that returns multiple Patient rows and map them.
+        public System.Collections.Generic.List<Patient> QueryPatients(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            using var reader = cmd.ExecuteReader();
+            var list = new System.Collections.Generic.List<Patient>();
+            while (reader.Read())
+            {
+                list.Add(MapPatient(reader));
+            }
+            return list;
+        }
+
+        // Execute a query that returns single Patient or null.
+        public Patient? QuerySinglePatient(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return null;
+            return MapPatient(reader);
+        }
+
+        // Execute scalar (e.g. insert + select identity)
+        public object? ExecuteScalar(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            return cmd.ExecuteScalar();
+        }
+
+        // Execute non-query (update/delete) and return affected rows
+        public int ExecuteNonQuery(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            return cmd.ExecuteNonQuery();
+        }
+
+        public Patient MapPatient(IDataRecord reader)
+        {
+            return new Patient
+            {
+                PatientId = reader.GetInt32(reader.GetOrdinal("patient_id")),
+                OrganizationId = reader.IsDBNull(reader.GetOrdinal("organization_id")) ? null : reader.GetInt32(reader.GetOrdinal("organization_id")),
+                LegalEntityId = reader.IsDBNull(reader.GetOrdinal("legal_entity_id")) ? null : reader.GetInt32(reader.GetOrdinal("legal_entity_id")),
+                PatientName = reader.GetString(reader.GetOrdinal("patient_name")),
+                Age = reader.IsDBNull(reader.GetOrdinal("age")) ? null : reader.GetInt32(reader.GetOrdinal("age")),
+                Gender = reader.IsDBNull(reader.GetOrdinal("gender")) ? null : reader.GetString(reader.GetOrdinal("gender")),
+                DateOfBirth = reader.IsDBNull(reader.GetOrdinal("date_of_birth")) ? null : reader.GetDateTime(reader.GetOrdinal("date_of_birth")),
+                Phone = reader.IsDBNull(reader.GetOrdinal("phone")) ? null : reader.GetString(reader.GetOrdinal("phone")),
+                Email = reader.IsDBNull(reader.GetOrdinal("email")) ? null : reader.GetString(reader.GetOrdinal("email")),
+                Address = reader.IsDBNull(reader.GetOrdinal("address")) ? null : reader.GetString(reader.GetOrdinal("address")),
+                CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? default : reader.GetDateTime(reader.GetOrdinal("created_at")),
+                UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+            };
+        }
+    }
+}

@@ -1,0 +1,6 @@
+﻿namespace LabManagement.Controllers
+{
+    public class PatientDetailsController
+    {
+    }
+}

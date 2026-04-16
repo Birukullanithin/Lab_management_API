@@ -1,0 +1,26 @@
+﻿using System.Data;
+
+namespace LabManagement.Data
+{
+    public class SqlConnectionFactory : ISqlConnectionFactory
+    {
+        private readonly string _connectionString;
+
+        public SqlConnectionFactory(IConfiguration configuration)
+        {
+            // Expect a connection string named "DefaultConnection" in appsettings
+            _connectionString = configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
+        }
+
+        public IDbConnection CreateConnection()
+        {
+            // Concrete IDbConnection provider (e.g. SqlConnection or NpgsqlConnection) should be
+            // created here by adding the appropriate package to the project and updating this
+            // factory. For now this is a placeholder to keep the project compiling; replace
+            // with `return new SqlConnection(_connectionString);` after adding the provider.
+            throw new System.NotImplementedException("Add a database provider (e.g. Microsoft.Data.SqlClient or Npgsql) and return a concrete IDbConnection here.");
+        }
+
+        public string GetConnectionString() => _connectionString;
+    }
+}

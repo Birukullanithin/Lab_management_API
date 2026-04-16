@@ -1,0 +1,58 @@
+﻿using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using LabManagement.Interfaces;
+using LabManagement.Dtos;
+
+namespace LabManagement.Controllers
+{
+    [ApiController]
+    [Route("api/patients")]
+    public class PatientDetailsController : ControllerBase
+    {
+        private readonly IPatientService _service;
+
+        public PatientDetailsController(IPatientService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<PatientDto>>> GetAllPatients()
+        {
+            var list = await _service.GetAllPatientsAsync();
+            return Ok(list);
+        }
+
+        [HttpGet("{patientId}")]
+        public async Task<ActionResult<PatientDto?>> GetPatientById(int patientId)
+        {
+            var patient = await _service.GetPatientByIdAsync(patientId);
+            if (patient == null) return NotFound();
+            return Ok(patient);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<PatientDto>> CreatePatient([FromBody] PatientDto dto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var created = await _service.CreatePatientAsync(dto);
+            return CreatedAtAction(nameof(GetPatientById), new { patientId = created.PatientId }, created);
+        }
+
+        [HttpPut("{patientId}")]
+        public async Task<IActionResult> UpdatePatient(int patientId, [FromBody] PatientDto dto)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            await _service.UpdatePatientAsync(patientId, dto);
+            return NoContent();
+        }
+
+        [HttpDelete("{patientId}")]
+        public async Task<IActionResult> DeletePatient(int patientId)
+        {
+            await _service.DeletePatientAsync(patientId);
+            return NoContent();
+        }
+    }
+}

@@ -1,0 +1,25 @@
+﻿using System.Data;
+using Microsoft.Extensions.Configuration;
+using Npgsql;
+
+namespace LabManagement.Data
+{
+    public class SqlConnectionFactory : ISqlConnectionFactory
+    {
+        private readonly string _connectionString;
+
+        public SqlConnectionFactory(IConfiguration configuration)
+        {
+            // Expect a connection string named "DefaultConnection" in appsettings
+            _connectionString = configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
+        }
+
+        public IDbConnection CreateConnection()
+        {
+            // Using Npgsql for PostgreSQL
+            return new NpgsqlConnection(_connectionString);
+        }
+
+        public string GetConnectionString() => _connectionString;
+    }
+}

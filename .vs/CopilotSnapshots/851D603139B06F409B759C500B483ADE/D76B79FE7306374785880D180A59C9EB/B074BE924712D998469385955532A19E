@@ -1,0 +1,172 @@
+﻿using System;
+using System.Data;
+using System.Reflection;
+using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations.Schema;
+using LabManagement.Models;
+
+namespace LabManagement.Data
+{
+    // Db context helpers for plain ADO.NET usage. It exposes helpers to create
+    // parameters and map IDataRecord to domain models. SQL statements remain in
+    // the repository per project preference.
+    public class LabDbContext
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public LabDbContext(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public string GetConnectionString() => _connectionFactory.GetConnectionString();
+
+        public IDbDataParameter CreateParameter(IDbCommand cmd, string name, object? value)
+        {
+            var p = cmd.CreateParameter();
+            p.ParameterName = name;
+            p.Value = value ?? DBNull.Value;
+            cmd.Parameters.Add(p);
+            return p;
+        }
+
+        public void AddParameters(IDbCommand cmd, System.Collections.Generic.IDictionary<string, object?> parameters)
+        {
+            if (parameters == null) return;
+            foreach (var kv in parameters)
+            {
+                var name = kv.Key;
+                if (!name.StartsWith("@")) name = "@" + name;
+                CreateParameter(cmd, name, kv.Value);
+            }
+        }
+
+        public IDbConnection GetOpenConnection()
+        {
+            var conn = _connectionFactory.CreateConnection();
+            // For Npgsql (Postgres) ensure proper behaviour when opening
+            conn.Open();
+            return conn;
+        }
+
+        public IDbCommand CreateCommand(IDbConnection connection, string sql)
+        {
+            var cmd = connection.CreateCommand();
+            cmd.CommandText = sql;
+            return cmd;
+        }
+
+        private static readonly ConcurrentDictionary<Type, PropertyInfo[]> _typeProperties = new();
+
+        // Deserialize IDataRecord into target type T using ColumnAttribute (if present)
+        // or property name matching. This is generic and reusable across queries.
+        public T Deserialize<T>(IDataRecord reader)
+        {
+            var t = typeof(T);
+            var props = _typeProperties.GetOrAdd(t, ty => ty.GetProperties(BindingFlags.Public | BindingFlags.Instance));
+            var instance = Activator.CreateInstance<T>();
+
+            foreach (var prop in props)
+            {
+                if (!prop.CanWrite) continue;
+
+                // determine column name: ColumnAttribute.Name if present, otherwise property name
+                var colAttr = prop.GetCustomAttribute<ColumnAttribute>();
+                var colName = colAttr?.Name ?? prop.Name;
+
+                int ordinal;
+                try
+                {
+                    ordinal = reader.GetOrdinal(colName);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    // try case-insensitive match (e.g. snake_case vs PascalCase)
+                    ordinal = -1;
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        if (string.Equals(reader.GetName(i), colName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            ordinal = i;
+                            break;
+                        }
+                    }
+                    if (ordinal == -1) continue;
+                }
+
+                if (reader.IsDBNull(ordinal))
+                {
+                    prop.SetValue(instance, null);
+                    continue;
+                }
+
+                var value = reader.GetValue(ordinal);
+                var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                try
+                {
+                    var converted = Convert.ChangeType(value, targetType);
+                    prop.SetValue(instance, converted);
+                }
+                catch
+                {
+                    // fallback: try to set directly if types are assignable
+                    if (targetType.IsAssignableFrom(value.GetType()))
+                    {
+                        prop.SetValue(instance, value);
+                    }
+                }
+            }
+
+            return instance;
+        }
+
+        // Execute a query that returns multiple rows and deserialize them to T.
+        public System.Collections.Generic.List<T> Query<T>(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            using var reader = cmd.ExecuteReader();
+            var list = new System.Collections.Generic.List<T>();
+            while (reader.Read())
+            {
+                list.Add(Deserialize<T>(reader));
+            }
+            return list;
+        }
+
+        // Execute a query that returns a single row and deserialize to T.
+        public T? QuerySingle<T>(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return default;
+            return Deserialize<T>(reader);
+        }
+
+        // Execute scalar (e.g. insert + select identity) and return typed value
+        public T? ExecuteScalar<T>(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            var result = cmd.ExecuteScalar();
+            if (result == null || result == DBNull.Value) return default;
+            return (T)Convert.ChangeType(result, typeof(T));
+        }
+
+        // Execute non-query (update/delete) and return affected rows
+        public int ExecuteNonQuery(string sql, System.Collections.Generic.IDictionary<string, object?>? parameters)
+        {
+            using var conn = GetOpenConnection();
+            using var cmd = CreateCommand(conn, sql);
+            AddParameters(cmd, parameters ?? new System.Collections.Generic.Dictionary<string, object?>());
+            return cmd.ExecuteNonQuery();
+        }
+
+        // Note: mapping from IDataRecord to models is intentionally left to the repository
+        // via the Func<IDataRecord, T> parameter on the Query/QuerySingle methods.
+    }
+}

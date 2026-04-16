@@ -1,0 +1,15 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using LabManagement.Dtos;
+
+namespace LabManagement.Interfaces
+{
+    public interface IPatientService
+    {
+        Task<PatientDto?> GetByIdAsync(int patientId);
+        Task<IEnumerable<PatientDto>> GetAllAsync();
+        Task<PatientDto> CreateAsync(PatientDto dto);
+        Task UpdateAsync(int patientId, PatientDto dto);
+        Task DeleteAsync(int patientId);
+    }
+}

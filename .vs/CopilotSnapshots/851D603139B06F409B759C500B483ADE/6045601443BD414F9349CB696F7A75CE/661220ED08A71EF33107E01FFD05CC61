@@ -1,0 +1,80 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Data;
+// Dapper methods are extension methods on IDbConnection. Ensure Dapper package is referenced.
+using Dapper;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public PatientRepository(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public async Task<Patient?> GetByIdAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            var sql = @"SELECT patient_id AS PatientId, organization_id AS OrganizationId, legal_entity_id AS LegalEntityId,
+                               patient_name AS PatientName, age, gender, date_of_birth AS DateOfBirth,
+                               phone, email, address, created_at AS CreatedAt, updated_at AS UpdatedAt
+                        FROM lab.patient
+                        WHERE patient_id = @Id";
+            return await conn.QueryFirstOrDefaultAsync<Patient>(sql, new { Id = patientId });
+        }
+
+        public async Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            var sql = @"SELECT patient_id AS PatientId, organization_id AS OrganizationId, legal_entity_id AS LegalEntityId,
+                               patient_name AS PatientName, age, gender, date_of_birth AS DateOfBirth,
+                               phone, email, address, created_at AS CreatedAt, updated_at AS UpdatedAt
+                        FROM lab.patient";
+            return await conn.QueryAsync<Patient>(sql);
+        }
+
+        public async Task<Patient> CreateAsync(Patient patient)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            var sql = @"INSERT INTO lab.patient (organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at)
+                        VALUES (@OrganizationId, @LegalEntityId, @PatientName, @Age, @Gender, @DateOfBirth, @Phone, @Email, @Address, @CreatedAt, @UpdatedAt);
+                        SELECT CAST(SCOPE_IDENTITY() as int);";
+            // Note: SCOPE_IDENTITY is for SQL Server. If you're using Postgres, return with RETURNING patient_id instead.
+            var id = await conn.QuerySingleAsync<int>(sql, patient);
+            patient.PatientId = id;
+            return patient;
+        }
+
+        public async Task UpdateAsync(Patient patient)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            var sql = @"UPDATE lab.patient SET
+                            organization_id = @OrganizationId,
+                            legal_entity_id = @LegalEntityId,
+                            patient_name = @PatientName,
+                            age = @Age,
+                            gender = @Gender,
+                            date_of_birth = @DateOfBirth,
+                            phone = @Phone,
+                            email = @Email,
+                            address = @Address,
+                            updated_at = @UpdatedAt
+                        WHERE patient_id = @PatientId";
+            await conn.ExecuteAsync(sql, patient);
+        }
+
+        public async Task DeleteAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            var sql = "DELETE FROM lab.patient WHERE patient_id = @Id";
+            await conn.ExecuteAsync(sql, new { Id = patientId });
+        }
+    }
+}

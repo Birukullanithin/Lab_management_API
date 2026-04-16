@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Data;
+using LabManagement.Models;
+using LabManagement.Data;
+using LabManagement.Interfaces;
+
+namespace LabManagement.Repositories
+{
+    public class PatientRepository : IPatientRepository
+    {
+        private readonly ISqlConnectionFactory _connectionFactory;
+
+        public PatientRepository(ISqlConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public Task<Patient?> GetByIdAsync(int patientId)
+        {
+            using var ctx = new LabDbContext(_connectionFactory);
+            using var conn = ctx.GetOpenConnection();
+            using var cmd = ctx.CreateCommand(conn, @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient WHERE patient_id = @Id");
+            ctx.CreateParameter(cmd, "@Id", patientId);
+
+            using var reader = cmd.ExecuteReader();
+            if (!reader.Read()) return Task.FromResult<Patient?>(null);
+
+            var p = ctx.MapPatient(reader);
+            return Task.FromResult<Patient?>(p);
+        }
+
+        public Task<IEnumerable<Patient>> GetAllAsync()
+        {
+            using var ctx = new LabDbContext(_connectionFactory);
+            using var conn = ctx.GetOpenConnection();
+            using var cmd = ctx.CreateCommand(conn, @"SELECT patient_id, organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at
+                                FROM lab.patient");
+            using var reader = cmd.ExecuteReader();
+            var list = new List<Patient>();
+            while (reader.Read())
+            {
+                list.Add(ctx.MapPatient(reader));
+            }
+            return Task.FromResult<IEnumerable<Patient>>(list);
+        }
+
+        public Task<Patient> CreateAsync(Patient patient)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            using var ctx = new LabDbContext(_connectionFactory);
+            using var cmd = conn.CreateCommand();
+            conn.Open();
+            // SQL kept here in repository per preference
+            cmd.CommandText = @"INSERT INTO lab.patient (organization_id, legal_entity_id, patient_name, age, gender, date_of_birth, phone, email, address, created_at, updated_at)
+                                VALUES (@OrganizationId, @LegalEntityId, @PatientName, @Age, @Gender, @DateOfBirth, @Phone, @Email, @Address, @CreatedAt, @UpdatedAt);
+                                SELECT SCOPE_IDENTITY();";
+
+            ctx.CreateParameter(cmd, "@OrganizationId", patient.OrganizationId);
+            ctx.CreateParameter(cmd, "@LegalEntityId", patient.LegalEntityId);
+            ctx.CreateParameter(cmd, "@PatientName", patient.PatientName);
+            ctx.CreateParameter(cmd, "@Age", patient.Age);
+            ctx.CreateParameter(cmd, "@Gender", patient.Gender);
+            ctx.CreateParameter(cmd, "@DateOfBirth", patient.DateOfBirth);
+            ctx.CreateParameter(cmd, "@Phone", patient.Phone);
+            ctx.CreateParameter(cmd, "@Email", patient.Email);
+            ctx.CreateParameter(cmd, "@Address", patient.Address);
+            ctx.CreateParameter(cmd, "@CreatedAt", patient.CreatedAt);
+            ctx.CreateParameter(cmd, "@UpdatedAt", patient.UpdatedAt);
+
+            var result = cmd.ExecuteScalar();
+            if (result != null && int.TryParse(result.ToString(), out var id))
+            {
+                patient.PatientId = id;
+            }
+            return Task.FromResult(patient);
+        }
+
+        public Task UpdateAsync(Patient patient)
+        {
+            using var ctx = new LabDbContext(_connectionFactory);
+            using var conn = ctx.GetOpenConnection();
+            using var cmd = ctx.CreateCommand(conn, @"UPDATE lab.patient SET
+                                organization_id = @OrganizationId,
+                                legal_entity_id = @LegalEntityId,
+                                patient_name = @PatientName,
+                                age = @Age,
+                                gender = @Gender,
+                                date_of_birth = @DateOfBirth,
+                                phone = @Phone,
+                                email = @Email,
+                                address = @Address,
+                                updated_at = @UpdatedAt
+                            WHERE patient_id = @PatientId");
+
+            ctx.CreateParameter(cmd, "@OrganizationId", patient.OrganizationId);
+            ctx.CreateParameter(cmd, "@LegalEntityId", patient.LegalEntityId);
+            ctx.CreateParameter(cmd, "@PatientName", patient.PatientName);
+            ctx.CreateParameter(cmd, "@Age", patient.Age);
+            ctx.CreateParameter(cmd, "@Gender", patient.Gender);
+            ctx.CreateParameter(cmd, "@DateOfBirth", patient.DateOfBirth);
+            ctx.CreateParameter(cmd, "@Phone", patient.Phone);
+            ctx.CreateParameter(cmd, "@Email", patient.Email);
+            ctx.CreateParameter(cmd, "@Address", patient.Address);
+            ctx.CreateParameter(cmd, "@UpdatedAt", patient.UpdatedAt);
+            ctx.CreateParameter(cmd, "@PatientId", patient.PatientId);
+
+            cmd.ExecuteNonQuery();
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(int patientId)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            conn.Open();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE FROM lab.patient WHERE patient_id = @Id";
+            var p = cmd.CreateParameter();
+            p.ParameterName = "@Id";
+            p.Value = patientId;
+            cmd.Parameters.Add(p);
+            cmd.ExecuteNonQuery();
+            return Task.CompletedTask;
+        }
+    }
+}
