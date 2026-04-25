@@ -8,6 +8,12 @@ builder.Services.AddSingleton<LabManagement.Data.ISqlConnectionFactory, LabManag
 builder.Services.AddScoped<LabManagement.Data.LabDbContext>();
 builder.Services.AddScoped<LabManagement.Interfaces.IPatientRepository, LabManagement.Repositories.PatientRepository>();
 builder.Services.AddScoped<LabManagement.Interfaces.IPatientService, LabManagement.Services.PatientService>();
+builder.Services.AddScoped<LabManagement.Interfaces.IOrganizationRepository, LabManagement.Repositories.OrganizationRepository>();
+builder.Services.AddScoped<LabManagement.Interfaces.IOrganizationService, LabManagement.Services.OrganizationService>();
+builder.Services.AddScoped<LabManagement.Interfaces.ILegalEntityRepository, LabManagement.Repositories.LegalEntityRepository>();
+builder.Services.AddScoped<LabManagement.Interfaces.ILegalEntityService, LabManagement.Services.LegalEntityService>();
+builder.Services.AddScoped<LabManagement.Interfaces.IAuthRepository, LabManagement.Repositories.AuthRepository>();
+builder.Services.AddScoped<LabManagement.Interfaces.IAuthService, LabManagement.Services.AuthService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

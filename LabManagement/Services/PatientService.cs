@@ -39,7 +39,7 @@ namespace LabManagement.Services
 
                 var orderTestDtoList = new List<TestMasterDto>();
 
-                // 5. Loop each test → get test name using testId
+                // 5. Loop each test â†’ get test name using testId
                 foreach (var ot in orderTests)
                 {
                     var testDetails = await _patientrepository
@@ -47,7 +47,7 @@ namespace LabManagement.Services
 
                     var dto = new TestMasterDto
                     {
-                        TestName = testDetails?.TestName   // 👈 important
+                        TestName = testDetails?.TestName   // ðŸ‘ˆ important
                     };
 
                     orderTestDtoList.Add(dto);
@@ -87,7 +87,7 @@ namespace LabManagement.Services
 
                     var orderTestDtoList = new List<TestMasterDto>();
 
-                    // 4. Loop tests → get test names
+                    // 4. Loop tests â†’ get test names
                     foreach (var ot in orderTests)
                     {
                         var testDetails = await _patientrepository
@@ -148,7 +148,7 @@ namespace LabManagement.Services
                 var patient = MapToEntity(dto);
                 var createdPatient = await _patientrepository.CreatePatientAsync(patient);
 
-                // 2️⃣ Create Order
+                // 2ï¸âƒ£ Create Order
                 var order = new Order
                 {
                     PatientId = createdPatient.PatientId,
@@ -159,10 +159,10 @@ namespace LabManagement.Services
 
                 var createdOrder = await _patientrepository.CreateOrderAsync(order);
 
-                // 3️⃣ Get Tests from DB
+                // 3ï¸âƒ£ Get Tests from DB
                 var tests = await _patientrepository.GetTestsByNamesAsync(dto.TestNames);
 
-                // 4️⃣ Insert into OrderTests
+                // 4ï¸âƒ£ Insert into OrderTests
                 foreach (var test in tests)
                 {
                     var orderTest = new OrderTests

@@ -36,6 +36,6 @@ namespace LabManagement.Dtos
 
         public List<string> TestNames { get; set; } = new();
 
-        public OrderDto order { get; set; }
+        public OrderDto? order { get; set; }
     }
 }
