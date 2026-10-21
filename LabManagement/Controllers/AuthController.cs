@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using LabManagement.Dtos;
 using LabManagement.Interfaces;
 using Microsoft.AspNetCore.Mvc;

@@ -1,0 +1,271 @@
+CREATE DATABASE lab_management;
+
+CREATE SCHEMA lab;
+
+CREATE TABLE lab.organization (
+    organization_id SERIAL PRIMARY KEY,
+    organization_name VARCHAR(255) NOT NULL,
+    organization_code VARCHAR(50) UNIQUE,
+    organization_address TEXT,
+    organization_email VARCHAR(100),
+    organization_phone VARCHAR(20),
+    organization_logo TEXT, -- store file path/url
+    organization_description TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE lab.legal_entity (
+    legal_entity_id SERIAL PRIMARY KEY,
+    organization_id INT,
+    legal_entity_code VARCHAR(50),
+    legal_entity_name VARCHAR(255) NOT NULL,
+    legal_entity_address TEXT,
+    gst_number VARCHAR(50),
+    contact_number VARCHAR(20),
+    email VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    CONSTRAINT fk_legal_org FOREIGN KEY (organization_id)
+        REFERENCES lab.organization(organization_id)
+);
+
+CREATE TABLE lab.patient (
+    patient_id SERIAL PRIMARY KEY,
+    organization_id INT,
+    legal_entity_id INT,
+
+    patient_name VARCHAR(255) NOT NULL,
+    age INT,
+    gender VARCHAR(10),
+    date_of_birth DATE,
+
+    phone VARCHAR(20),
+    email VARCHAR(100),
+
+    address_id INT,  -- FK instead of address TEXT
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+
+    CONSTRAINT fk_patient_org FOREIGN KEY (organization_id)
+        REFERENCES lab.organization(organization_id),
+
+    CONSTRAINT fk_patient_legal FOREIGN KEY (legal_entity_id)
+        REFERENCES lab.legal_entity(legal_entity_id),
+
+    CONSTRAINT fk_patient_address FOREIGN KEY (address_id)
+        REFERENCES lab.patient_address(address_id)
+);
+
+CREATE TABLE lab.orders (
+    order_id SERIAL PRIMARY KEY,
+    patient_id INT,
+    order_number VARCHAR(50) UNIQUE,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) DEFAULT 'Pending',
+    total_amount DECIMAL(10,2),
+    remarks TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_order_patient FOREIGN KEY (patient_id)
+        REFERENCES lab.patient(patient_id)
+);
+
+CREATE TABLE lab.test_master (
+    test_id SERIAL PRIMARY KEY,
+    test_name VARCHAR(255) NOT NULL,
+    test_code VARCHAR(50),
+    normal_min DECIMAL(10,2),
+    normal_max DECIMAL(10,2),
+    unit VARCHAR(50),
+    description TEXT,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lab.test_result (
+    test_result_id SERIAL PRIMARY KEY,
+    order_id INT,
+    test_id INT,
+    patient_id INT,
+    result_value VARCHAR(50),
+    result_text VARCHAR(255),
+    status VARCHAR(50), -- Normal / High / Low
+    remarks TEXT,
+    result_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_tr_order FOREIGN KEY (order_id)
+        REFERENCES lab.orders(order_id),
+    CONSTRAINT fk_tr_test FOREIGN KEY (test_id)
+        REFERENCES lab.test_master(test_id),
+    CONSTRAINT fk_tr_patient FOREIGN KEY (patient_id)
+        REFERENCES lab.patient(patient_id)
+);
+
+CREATE TABLE lab.order_tests (
+    order_test_id SERIAL PRIMARY KEY,
+    order_id INT,
+    test_id INT,
+    price DECIMAL(10,2),
+    status VARCHAR(50) DEFAULT 'Pending',
+    CONSTRAINT fk_ot_order FOREIGN KEY (order_id)
+        REFERENCES lab.orders(order_id),
+    CONSTRAINT fk_ot_test FOREIGN KEY (test_id)
+        REFERENCES lab.test_master(test_id)
+);
+
+CREATE TABLE lab.patient_address (
+    address_id SERIAL PRIMARY KEY,
+    patient_id INT,
+    street TEXT,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    pincode VARCHAR(10),
+    country VARCHAR(100),
+
+    CONSTRAINT fk_patient_address FOREIGN KEY (patient_id)
+        REFERENCES lab.patient(patient_id)
+);
+
+CREATE TABLE lab.users (
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    organization_id INT NULL,
+    legal_entity_id INT NULL,
+    role VARCHAR(50) NOT NULL, -- SuperAdmin, OrgAdmin, User
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_user_org FOREIGN KEY (organization_id)
+        REFERENCES lab.organization(organization_id),
+
+    CONSTRAINT fk_user_legal FOREIGN KEY (legal_entity_id)
+        REFERENCES lab.legal_entity(legal_entity_id)
+);
+
+CREATE TABLE lab.test_master (
+    test_id SERIAL PRIMARY KEY,
+
+    -- Basic Details
+    test_name VARCHAR(255) NOT NULL,
+    test_code VARCHAR(50) UNIQUE,
+    description TEXT,
+
+    -- Test Type
+    test_type VARCHAR(50) DEFAULT 'DirectEntry',
+    -- DirectEntry / Calculated / Panel
+
+    has_formula BOOLEAN DEFAULT FALSE,
+    formula_expression TEXT,
+    -- Example:
+    -- (TC - HDL - TG/5)
+
+    formula_inputs VARCHAR(500),
+    -- Example:
+    -- TC,HDL,TG
+
+    -- Reference Ranges
+    normal_min DECIMAL(10,2),
+    normal_max DECIMAL(10,2),
+
+    male_min DECIMAL(10,2),
+    male_max DECIMAL(10,2),
+
+    female_min DECIMAL(10,2),
+    female_max DECIMAL(10,2),
+
+    pediatric_min DECIMAL(10,2),
+    pediatric_max DECIMAL(10,2),
+
+    -- Critical Alert Limits
+    critical_low DECIMAL(10,2),
+    critical_high DECIMAL(10,2),
+
+    -- Units and Method
+    unit VARCHAR(50),
+    default_method VARCHAR(100),
+
+    -- Behavior Flags
+    is_calculated BOOLEAN DEFAULT FALSE,
+    is_abnormal_auto_check BOOLEAN DEFAULT TRUE,
+    allow_manual_entry BOOLEAN DEFAULT TRUE,
+
+    -- UI/Display
+    display_order INT DEFAULT 1,
+
+    -- Audit
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE TABLE lab.test_result (
+    test_result_id SERIAL PRIMARY KEY,
+
+    -- Relationships
+    order_id INT NOT NULL,
+    test_id INT NOT NULL,
+    patient_id INT NOT NULL,
+
+    -- For multi-component tests
+    component_name VARCHAR(100),
+    -- Example: Hemoglobin, WBC, LDL
+
+    -- Result Values
+    entered_value DECIMAL(12,4),
+    calculated_value DECIMAL(12,4),
+
+    result_text VARCHAR(255),
+    -- For Positive/Negative etc
+
+    final_result VARCHAR(50),
+    -- actual display result
+
+    -- Snapshot at time of entry
+    unit VARCHAR(50),
+    reference_min DECIMAL(10,2),
+    reference_max DECIMAL(10,2),
+
+    -- Flags
+    abnormal_flag BOOLEAN DEFAULT FALSE,
+    critical_flag BOOLEAN DEFAULT FALSE,
+
+    status VARCHAR(50),
+    -- Normal / High / Low / Critical
+
+    -- Method used during test
+    method_used VARCHAR(100),
+
+    -- Notes shown in your UI
+    remarks TEXT,
+    advice TEXT,
+
+    -- Workflow
+    entry_status VARCHAR(50) DEFAULT 'Pending',
+    -- Pending / Entered / Verified / Approved / Released
+
+    entered_by INT,
+    verified_by INT,
+    approved_by INT,
+
+    entered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    verified_at TIMESTAMP,
+    approved_at TIMESTAMP,
+
+    result_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+
+    CONSTRAINT fk_tr_order FOREIGN KEY (order_id)
+        REFERENCES lab.orders(order_id),
+
+    CONSTRAINT fk_tr_test FOREIGN KEY (test_id)
+        REFERENCES lab.test_master(test_id),
+
+    CONSTRAINT fk_tr_patient FOREIGN KEY (patient_id)
+        REFERENCES lab.patient(patient_id)
+);

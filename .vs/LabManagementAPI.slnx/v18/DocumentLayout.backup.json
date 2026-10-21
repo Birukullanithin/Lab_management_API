@@ -3,12 +3,112 @@
   "WorkspaceRootPath": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\testmasterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\testmasterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\resultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\resultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\repositories\\resultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\repositories\\resultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\patientdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\patientdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\testmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\testmastercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\data\\labdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\data\\labdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\bmicalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\bmicalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\resultsaverequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\resultsaverequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\resultresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\resultresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\iresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\interfaces\\iresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\iformulacalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\interfaces\\iformulacalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\iresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\interfaces\\iresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\resultcomponentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\resultcomponentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\irangevalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\interfaces\\irangevalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\legalentitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\legalentitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\patientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\patientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\repositories\\legalentityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\repositories\\legalentityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\testmasterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\testmasterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\dtos\\ordertestsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,14 +119,6 @@
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\dtos\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\patientdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\patientdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\models\\ordertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\models\\ordertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,20 +127,8 @@
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\models\\testmaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\data\\labdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\data\\labdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,20 +139,8 @@
       "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\data\\sqlconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\interfaces\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\interfaces\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|c:\\users\\karth\\downloads\\lap_project\\labmanagementapi\\labmanagement\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{14A144DD-9915-D0BD-1D27-3C5CC3103FDA}|LabManagement\\LabManagement.csproj|solutionrelative:labmanagement\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\WeatherForecastController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LabManagement\\Controllers\\WeatherForecastController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,8 +150,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ResultService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\ResultService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Services\\ResultService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\ResultService.cs",
+              "RelativeToolTip": "LabManagement\\Services\\ResultService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:15:50.386Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResultRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\ResultRepository.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Repositories\\ResultRepository.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\ResultRepository.cs",
+              "RelativeToolTip": "LabManagement\\Repositories\\ResultRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAArwIUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:37:39.69Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ResultsController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\ResultsController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\ResultsController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\ResultsController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\ResultsController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAhwCoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:15:30.075Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TestMasterController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\TestMasterController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\TestMasterController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\TestMasterController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\TestMasterController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T18:44:18.527Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCEAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T18:22:44.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PatientService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\PatientService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Services\\PatientService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\PatientService.cs",
+              "RelativeToolTip": "LabManagement\\Services\\PatientService.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAlwEAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T19:20:11.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ResultSaveRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultSaveRequestDto.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Dtos\\ResultSaveRequestDto.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultSaveRequestDto.cs",
+              "RelativeToolTip": "LabManagement\\Dtos\\ResultSaveRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T18:49:37.665Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -92,62 +248,241 @@
               "RelativeDocumentMoniker": "LabManagement\\Controllers\\PatientDetailsController.cs",
               "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\PatientDetailsController.cs",
               "RelativeToolTip": "LabManagement\\Controllers\\PatientDetailsController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwC8AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAlwCYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T13:23:28.569Z",
-              "IsPinned": true
+              "WhenOpened": "2026-04-30T18:36:43.441Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PatientService.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\PatientService.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Services\\PatientService.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\PatientService.cs",
-              "RelativeToolTip": "LabManagement\\Services\\PatientService.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAIA5wI0AAAAfAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "ResultResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultResponseDto.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Dtos\\ResultResponseDto.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultResponseDto.cs",
+              "RelativeToolTip": "LabManagement\\Dtos\\ResultResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T17:31:55.741Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PatientDto.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\PatientDto.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Dtos\\PatientDto.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\PatientDto.cs",
-              "RelativeToolTip": "LabManagement\\Dtos\\PatientDto.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T14:23:22.039Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Order.cs",
-              "RelativeToolTip": "LabManagement\\Models\\Order.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T16:08:38.067Z"
+              "WhenOpened": "2026-04-25T18:18:59.172Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "BmiCalculator.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\BmiCalculator.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Services\\BmiCalculator.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\BmiCalculator.cs",
+              "RelativeToolTip": "LabManagement\\Services\\BmiCalculator.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:17:24.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LabDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Data\\LabDbContext.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Data\\LabDbContext.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Data\\LabDbContext.cs",
+              "RelativeToolTip": "LabManagement\\Data\\LabDbContext.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAlwJoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T16:22:55.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IResultRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IResultRepository.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IResultRepository.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IResultRepository.cs",
+              "RelativeToolTip": "LabManagement\\Interfaces\\IResultRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:18:06.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IFormulaCalculator.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IFormulaCalculator.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IFormulaCalculator.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IFormulaCalculator.cs",
+              "RelativeToolTip": "LabManagement\\Interfaces\\IFormulaCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T09:52:36.166Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T19:44:29.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IResultService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IResultService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IResultService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IResultService.cs",
+              "RelativeToolTip": "LabManagement\\Interfaces\\IResultService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:18:17.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ResultComponentDto.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultComponentDto.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Dtos\\ResultComponentDto.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\ResultComponentDto.cs",
+              "RelativeToolTip": "LabManagement\\Dtos\\ResultComponentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:18:58.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IRangeValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IRangeValidationService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IRangeValidationService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IRangeValidationService.cs",
+              "RelativeToolTip": "LabManagement\\Interfaces\\IRangeValidationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T18:17:52.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "LabManagement\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\appsettings.Development.json",
+              "RelativeToolTip": "LabManagement\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-06T17:54:07.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Patient.cs",
               "RelativeDocumentMoniker": "LabManagement\\Models\\Patient.cs",
               "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Patient.cs",
               "RelativeToolTip": "LabManagement\\Models\\Patient.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAADwvwgAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAgwAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T16:08:51.544Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 17,
+              "Title": "LegalEntityController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\LegalEntityController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\LegalEntityController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\LegalEntityController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\LegalEntityController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T18:35:53.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "OrganizationService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\OrganizationService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Services\\OrganizationService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\OrganizationService.cs",
+              "RelativeToolTip": "LabManagement\\Services\\OrganizationService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAlwCcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T17:54:52.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LegalEntityRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\LegalEntityRepository.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Repositories\\LegalEntityRepository.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\LegalEntityRepository.cs",
+              "RelativeToolTip": "LabManagement\\Repositories\\LegalEntityRepository.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwEgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T07:20:09.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PatientDto.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\PatientDto.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Dtos\\PatientDto.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\PatientDto.cs",
+              "RelativeToolTip": "LabManagement\\Dtos\\PatientDto.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T14:23:22.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Services\\AuthService.cs",
+              "RelativeToolTip": "LabManagement\\Services\\AuthService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAlwCAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T19:58:21.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OrganizationController.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\OrganizationController.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Controllers\\OrganizationController.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\OrganizationController.cs",
+              "RelativeToolTip": "LabManagement\\Controllers\\OrganizationController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAkwBUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T17:54:24.027Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "TestMasterDto.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\TestMasterDto.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Dtos\\TestMasterDto.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\TestMasterDto.cs",
+              "RelativeToolTip": "LabManagement\\Dtos\\TestMasterDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA4wBYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T16:10:06.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Program.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Program.cs",
+              "RelativeToolTip": "LabManagement\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T12:45:01.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "TestMaster.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\TestMaster.cs",
               "RelativeDocumentMoniker": "LabManagement\\Models\\TestMaster.cs",
@@ -159,19 +494,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IPatientRepository.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientRepository.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IPatientRepository.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientRepository.cs",
-              "RelativeToolTip": "LabManagement\\Interfaces\\IPatientRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAswBIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T16:23:32.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 28,
               "Title": "OrderDto.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\OrderDto.cs",
               "RelativeDocumentMoniker": "LabManagement\\Dtos\\OrderDto.cs",
@@ -183,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 27,
               "Title": "OrderTestsDto.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\OrderTestsDto.cs",
               "RelativeDocumentMoniker": "LabManagement\\Dtos\\OrderTestsDto.cs",
@@ -195,32 +518,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TestMasterDto.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\TestMasterDto.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Dtos\\TestMasterDto.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Dtos\\TestMasterDto.cs",
-              "RelativeToolTip": "LabManagement\\Dtos\\TestMasterDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAIwBYAAAABAAAAAAAAAA==",
+              "DocumentIndex": 32,
+              "Title": "IPatientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientRepository.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IPatientRepository.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientRepository.cs",
+              "RelativeToolTip": "LabManagement\\Interfaces\\IPatientRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAswBIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T16:10:06.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-05T16:23:32.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PatientRepository.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\PatientRepository.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Repositories\\PatientRepository.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Repositories\\PatientRepository.cs",
-              "RelativeToolTip": "LabManagement\\Repositories\\PatientRepository.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAlwDAAAAApAAAAAAAAAA==",
+              "DocumentIndex": 31,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "LabManagement\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\Order.cs",
+              "RelativeToolTip": "LabManagement\\Models\\Order.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwA0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T14:38:55.355Z"
+              "WhenOpened": "2026-04-08T16:08:38.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 29,
               "Title": "OrderTests.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Models\\OrderTests.cs",
               "RelativeDocumentMoniker": "LabManagement\\Models\\OrderTests.cs",
@@ -232,19 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LabDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Data\\LabDbContext.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Data\\LabDbContext.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Data\\LabDbContext.cs",
-              "RelativeToolTip": "LabManagement\\Data\\LabDbContext.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAlwJ8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T16:22:55.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 33,
               "Title": "SqlConnectionFactory.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Data\\SqlConnectionFactory.cs",
               "RelativeDocumentMoniker": "LabManagement\\Data\\SqlConnectionFactory.cs",
@@ -256,49 +566,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IPatientService.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientService.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Interfaces\\IPatientService.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Interfaces\\IPatientService.cs",
-              "RelativeToolTip": "LabManagement\\Interfaces\\IPatientService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T16:23:09.809Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Program.cs",
-              "RelativeDocumentMoniker": "LabManagement\\Program.cs",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Program.cs",
-              "RelativeToolTip": "LabManagement\\Program.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwCEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T12:45:01.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "LabManagement\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\appsettings.Development.json",
-              "RelativeToolTip": "LabManagement\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-06T17:54:07.084Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 34,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "LabManagement\\Controllers\\WeatherForecastController.cs",
               "ToolTip": "C:\\Users\\karth\\Downloads\\Lap_Project\\LabManagementAPI\\LabManagement\\Controllers\\WeatherForecastController.cs",
               "RelativeToolTip": "LabManagement\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T12:45:09.903Z"
             }

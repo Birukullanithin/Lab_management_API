@@ -15,6 +15,6 @@
         public decimal? TotalAmount { get; set; }
 
         public string? Remarks { get; set; }
-        public List<TestMasterDto> OrderNames { get; set; }
+        public List<TestMasterDto> OrderNames { get; set; } = new();
     }
 }

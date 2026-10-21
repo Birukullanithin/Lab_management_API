@@ -11,11 +11,5 @@ namespace LabManagement.Interfaces
         Task<Patient> CreatePatientAsync(Patient patient);
         Task UpdatePatientAsync(Patient patient);
         Task DeletePatientAsync(int patientId);
-        Task<Order> CreateOrderAsync(Order order);
-        Task<List<TestMaster>> GetTestsByNamesAsync(List<string> testNames);
-        Task<OrderTests> CreateOrderTestAsync(OrderTests orderTest);
-        Task<Order?> GetOrderDetailsByPatientIdAsync(int patientId);
-        Task<IEnumerable<OrderTests>> GetOrderTestsByOrderIdAsync(int orderId);
-        Task<TestMaster> GetOrderTestsWithTestIdAsync(int testId);
     }
 }
